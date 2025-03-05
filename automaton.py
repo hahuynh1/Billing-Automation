@@ -4,12 +4,14 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 import login
+import time
 
 service = Service('./chromedriver.exe')
 driver = webdriver.Chrome(service=service)
 
 driver.get("https://navinet.navimedix.com/#/")
 
+# LOGIN PAGE
 username = driver.find_element(By.ID, "LoginPortletUsername")
 password = driver.find_element(By.ID, "LoginPortletPassword")
 
@@ -21,6 +23,23 @@ login_button.click()
 
 print(driver.current_url)
 
+# NAVIGATE TO CLIENT ID INPUT
+# Health Plans dropdown
+time.sleep(2)
+dropdown_button = driver.find_element(
+    By.XPATH,
+    "//button[contains(@class,'btn-menu') and .//span[contains(text(),'Health Plans')]]"
+)
+dropdown_button.click()
+
+# KF CHC button
+time.sleep(3)
+KFchc_button = driver.find_element(
+    By.ID, "health-plans-menu-plan-kchc" 
+)
+KFchc_button.click()
+
+# Eligibility Button
 
 
 input("\nPress Enter to close the browser...")
