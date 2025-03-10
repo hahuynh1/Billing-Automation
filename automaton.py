@@ -25,22 +25,24 @@ print(driver.current_url)
 
 # NAVIGATE TO CLIENT ID INPUT
 # Health Plans dropdown
-time.sleep(2)
-dropdown_button = driver.find_element(
-    By.XPATH,
-    "//button[contains(@class,'btn-menu') and .//span[contains(text(),'Health Plans')]]"
-)
-dropdown_button.click()
+time.sleep(3)
+HP_button = driver.find_element(By.XPATH, "//span[contains(text(),'Health Plans')]")
+HP_button.click()
 
 # KF CHC button
-time.sleep(3)
+time.sleep(1)
 KFchc_button = driver.find_element(
     By.ID, "health-plans-menu-plan-kchc" 
 )
 KFchc_button.click()
 
 # Eligibility Button
-
+time.sleep(1)
+eligibility_button = driver.find_element(
+    By.XPATH, 
+    "//a[@href='/eligibility-benefits/kchc/search']"
+)
+eligibility_button.click()
 
 input("\nPress Enter to close the browser...")
 
