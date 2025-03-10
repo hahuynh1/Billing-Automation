@@ -2,7 +2,8 @@ from selenium import webdriver # interact with web browser
 from selenium.webdriver.common.keys import Keys # simulate key presses\
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support.ui import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 import login
 import time
 
@@ -27,6 +28,10 @@ print(driver.current_url)
 # Health Plans dropdown
 time.sleep(3)
 HP_button = driver.find_element(By.XPATH, "//span[contains(text(),'Health Plans')]")
+# wait = WebDriverWait(driver, 10)
+# HP_button = WebDriverWait(driver, 10).until(
+#     EC.element_to_be_clickable((By.XPATH, "//span[contains(text(),'Health Plans')]"))
+# )
 HP_button.click()
 
 # KF CHC button
@@ -34,6 +39,9 @@ time.sleep(1)
 KFchc_button = driver.find_element(
     By.ID, "health-plans-menu-plan-kchc" 
 )
+# KFchc_button = WebDriverWait(driver, 10).until(
+#     EC.element_to_be_clickable((By.ID, "health-plans-menu-plan-kchc"))
+# )
 KFchc_button.click()
 
 # Eligibility Button
